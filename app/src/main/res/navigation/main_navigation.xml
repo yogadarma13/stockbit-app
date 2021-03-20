@@ -9,5 +9,14 @@
         android:id="@+id/loginFragment"
         android:name="com.yogadarma.stockbitapp.presentation.login.LoginFragment"
         android:label="Masuk"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_watchlistFragment"
+            app:destination="@id/watchlistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/watchlistFragment"
+        android:name="com.yogadarma.stockbitapp.presentation.watchlist.WatchlistFragment"
+        android:label="fragment_watchlist"
+        tools:layout="@layout/fragment_watchlist" />
 </navigation>

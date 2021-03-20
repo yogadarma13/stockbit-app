@@ -12,4 +12,5 @@
     <string name="logo_stockbit_text">Logo Stockbit</string>
     <string name="audio_title">Audio</string>
     <string name="login_with_fingerprint_text">Masuk dengan Fingerprint</string>
+    <string name="percentage_text">%s%%</string>
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.yogadarma.stockbitapp.R
 import com.yogadarma.stockbitapp.databinding.FragmentLoginBinding
 
@@ -29,6 +30,10 @@ class LoginFragment : Fragment() {
         binding.btnCreateAccount.text = HtmlCompat.fromHtml(
             "<font>Belum punya akun?</font> <font color='#1AA86E'>Daftar sekarang</font>",
             HtmlCompat.FROM_HTML_MODE_LEGACY
+        )
+
+        binding.btnLogin.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_watchlistFragment)
         )
     }
 
