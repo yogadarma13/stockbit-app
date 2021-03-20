@@ -23,18 +23,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        appBarConfiguration = AppBarConfiguration.Builder().build()
+        appBarConfiguration = AppBarConfiguration.Builder(R.id.loginFragment).build()
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.loginFragment) {
-                binding.toolbar.visibility = View.GONE
+                binding.toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+                binding.imgStockbitToolbar.visibility = View.GONE
+                binding.titleToolbar.visibility = View.VISIBLE
+                binding.titleToolbar.text = resources.getString(R.string.login_title)
             } else {
-                binding.toolbar.visibility = View.VISIBLE
+                binding.titleToolbar.visibility = View.GONE
+                binding.imgStockbitToolbar.visibility = View.VISIBLE
             }
         }
 

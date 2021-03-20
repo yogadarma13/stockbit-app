@@ -2,16 +2,43 @@
     <!-- Base application theme. -->
     <style name="Theme.StockbitApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryVariant">@color/primaryColor</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/primaryColor</item>
-        <item name="colorSecondaryVariant">@color/primaryColor</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorSecondaryVariant">@color/white</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Theme.StockbitApp.OutlinedButton.Icon" parent="Widget.MaterialComponents.Button.OutlinedButton.Icon">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="iconTint">@null</item>
+        <item name="rippleColor">@color/mid_gray</item>
+    </style>
+
+    <style name="Theme.StockbitApp.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="rippleColor">@color/mid_gray</item>
+    </style>
+
+    <style name="Theme.StockbitApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxStrokeColor">@color/green</item>
+        <item name="boxStrokeWidth">0.5dp</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
+    <style name="Theme.StockbitApp.TextInputEditText">
+        <item name="colorPrimary">@color/green</item>
+        <item name="android:textCursorDrawable">@color/green</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textSize">14sp</item>
     </style>
 </resources>

@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Stockbit App</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_title">Masuk</string>
+    <string name="login_with_google_text">Masuk dengan Google</string>
+    <string name="login_with_facebook_text">Masuk dengan Facebook</string>
+    <string name="or_text">Atau</string>
+    <string name="username_or_email_text">Username or Email</string>
+    <string name="password_text">Password</string>
+    <string name="forget_password_text">Lupa password</string>
+    <string name="login_text">Login</string>
+    <string name="dont_have_account_question">Belum punya akun?</string>
+    <string name="logo_stockbit_text">Logo Stockbit</string>
+    <string name="audio_title">Audio</string>
+    <string name="login_with_fingerprint_text">Masuk dengan Fingerprint</string>
 </resources>

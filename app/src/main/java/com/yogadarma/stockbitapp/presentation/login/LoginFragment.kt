@@ -1,10 +1,10 @@
 package com.yogadarma.stockbitapp.presentation.login
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
+import com.yogadarma.stockbitapp.R
 import com.yogadarma.stockbitapp.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -18,7 +18,24 @@ class LoginFragment : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
+        setHasOptionsMenu(true)
+
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnCreateAccount.text = HtmlCompat.fromHtml(
+            "<font>Belum punya akun?</font> <font color='#1AA86E'>Daftar sekarang</font>",
+            HtmlCompat.FROM_HTML_MODE_LEGACY
+        )
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.login_menu, menu)
     }
 
     override fun onDestroyView() {
