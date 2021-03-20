@@ -10,4 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <ScrollView
+        android:id="@+id/sv_shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/list_crypto_shimmer" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
