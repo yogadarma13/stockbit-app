@@ -7,6 +7,7 @@ import com.yogadarma.core.data.source.local.room.AppDatabase
 import com.yogadarma.core.data.source.remote.RemoteDataSource
 import com.yogadarma.core.data.source.remote.network.ApiService
 import com.yogadarma.core.domain.repository.IRepository
+import okhttp3.CacheControl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -31,6 +32,23 @@ val networkModule = module {
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
+            .cache(null)
+            .addInterceptor { chain ->
+                val originalRequest = chain.request()
+                val builder = originalRequest.newBuilder()
+                    .header(
+                        "Authorization",
+                        "Apikey 474a94ef13d1c271fa442cc487879627686ed55c0313862289656ab12e2bc3a8"
+                    )
+
+                val cacheControl = CacheControl.Builder()
+                    .noCache()
+                    .maxAge(5, TimeUnit.SECONDS)
+                    .build()
+
+                val authenticatedRequest = builder.cacheControl(cacheControl).build()
+                chain.proceed(authenticatedRequest)
+            }
             .build()
     }
 
