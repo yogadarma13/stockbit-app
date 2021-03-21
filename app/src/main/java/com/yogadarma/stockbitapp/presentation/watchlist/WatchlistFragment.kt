@@ -53,12 +53,18 @@ class WatchlistFragment : Fragment() {
             when (response) {
                 is Resource.Loading -> {
                     watchlistAdapter.setData(listOf())
+                    dismissEmptyDataView()
                     showShimmer()
                 }
                 is Resource.Success -> {
                     binding.swipeRefresh.isRefreshing = false
                     dismissShimmer()
-                    watchlistAdapter.setData(response.data)
+                    if (response.data?.size == 0) {
+                        showEmptyDataView()
+                    } else {
+                        dismissEmptyDataView()
+                        watchlistAdapter.setData(response.data)
+                    }
                 }
                 is Resource.Error -> {
                     binding.swipeRefresh.isRefreshing = false
@@ -75,6 +81,14 @@ class WatchlistFragment : Fragment() {
 
     private fun dismissShimmer() {
         binding.svShimmer.visibility = View.GONE
+    }
+
+    private fun showEmptyDataView() {
+        binding.viewEmpty.root.visibility = View.VISIBLE
+    }
+
+    private fun dismissEmptyDataView() {
+        binding.viewEmpty.root.visibility = View.GONE
     }
 
     override fun onDestroyView() {

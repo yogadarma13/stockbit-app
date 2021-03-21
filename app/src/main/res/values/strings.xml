@@ -13,4 +13,5 @@
     <string name="audio_title">Audio</string>
     <string name="login_with_fingerprint_text">Masuk dengan Fingerprint</string>
     <string name="percentage_text">%s%%</string>
+    <string name="empty_text">Tidak ada data</string>
 </resources>
