@@ -27,6 +27,7 @@ object DataMapper {
     fun mapEntitiesToDomain(input: List<CryptoEntity>): List<Crypto> =
         input.map {
             Crypto(
+                it.id,
                 it.name,
                 it.fullName,
                 it.price,
