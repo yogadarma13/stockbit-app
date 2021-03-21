@@ -20,6 +20,8 @@ class WatchlistFragment : Fragment() {
 
     private val watchlistViewModel: WatchlistViewModel by viewModel()
 
+    private lateinit var watchlistAdapter: WatchlistAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,21 +34,11 @@ class WatchlistFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val watchlistAdapter = WatchlistAdapter()
+        watchlistAdapter = WatchlistAdapter()
 
-        watchlistViewModel.getAllCrypto(50, "USD").observe(viewLifecycleOwner, { response ->
-            when (response) {
-                is Resource.Loading -> showShimmer()
-                is Resource.Success -> {
-                    dismissShimmer()
-                    watchlistAdapter.setData(response.data)
-                }
-                is Resource.Error -> {
-                    dismissShimmer()
-                    context?.toast(response.message.toString())
-                }
-            }
-        })
+        binding.swipeRefresh.setOnRefreshListener(this::requestCryptoData)
+
+        requestCryptoData()
 
         with(binding.rvCrypto) {
             layoutManager = LinearLayoutManager(context)
@@ -54,6 +46,27 @@ class WatchlistFragment : Fragment() {
             addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
             adapter = watchlistAdapter
         }
+    }
+
+    private fun requestCryptoData() {
+        watchlistViewModel.getAllCrypto(50, "USD").observe(viewLifecycleOwner, { response ->
+            when (response) {
+                is Resource.Loading -> {
+                    watchlistAdapter.setData(listOf())
+                    showShimmer()
+                }
+                is Resource.Success -> {
+                    binding.swipeRefresh.isRefreshing = false
+                    dismissShimmer()
+                    watchlistAdapter.setData(response.data)
+                }
+                is Resource.Error -> {
+                    binding.swipeRefresh.isRefreshing = false
+                    dismissShimmer()
+                    context?.toast(response.message.toString())
+                }
+            }
+        })
     }
 
     private fun showShimmer() {
