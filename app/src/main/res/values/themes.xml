@@ -20,6 +20,7 @@
         <item name="android:textColor">@color/black</item>
         <item name="iconTint">@null</item>
         <item name="rippleColor">@color/mid_gray</item>
+        <item name="strokeColor">@color/mid_gray</item>
     </style>
 
     <style name="Theme.StockbitApp.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
@@ -29,7 +30,7 @@
     </style>
 
     <style name="Theme.StockbitApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
-        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxBackgroundColor">@color/white</item>
         <item name="boxStrokeColor">@color/green</item>
         <item name="boxStrokeWidth">0.5dp</item>
         <item name="hintEnabled">false</item>
